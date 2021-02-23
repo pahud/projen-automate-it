@@ -1,6 +1,6 @@
 {
-  "name": "@pahud/projen-extensions",
-  "description": "Projen extensions common used by Pahud Hsieh",
+  "name": "projen-automate-it",
+  "description": "Projen wrapper for common operations",
   "scripts": {
     "projen": "npx projen",
     "start": "npx projen start",
