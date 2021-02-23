@@ -3,7 +3,7 @@ import * as pr from 'projen';
 export interface AutomationProps {
   /**
    * The github token for automation
-   * 
+   *
    * @default - GITHUB_TOKEN
    */
   readonly automationToken?: string;
@@ -13,7 +13,7 @@ export class Automation {
   readonly project: pr.Project;
   readonly automationToken: string;
   constructor(project: pr.Project, props: AutomationProps = {}) {
-    this.project = project
+    this.project = project;
     this.automationToken = props.automationToken ?? 'GITHUB_TOKEN';
   }
   public autoMerge() {
