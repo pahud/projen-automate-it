@@ -8,6 +8,7 @@ const project = new TypeScriptProject({
   releaseBranches: ['main'],
   deps: ['projen'],
   dependabot: false,
+  releaseToNpm: true,
 });
 
 project.synth();
