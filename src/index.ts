@@ -44,6 +44,7 @@ export class Automation {
                   MERGE_LABELS: 'auto-merge,!wip,!work in progress,!do-not-merge',
                   MERGE_RETRY_SLEEP: '60000',
                   MERGE_DELETE_BRANCH: 'true',
+                  MERGE_METHOD: 'squash',
                 },
               },
             ],
