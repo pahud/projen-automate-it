@@ -16,6 +16,7 @@
 /tsconfig.json
 dist
 junit.xml
+!.jsii
 !/lib
 !/lib/**/*.d.ts
 !/lib/**/*.js

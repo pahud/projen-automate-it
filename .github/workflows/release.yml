@@ -4,7 +4,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch: {}
 jobs:
   build:
@@ -45,6 +45,8 @@ jobs:
         with:
           name: dist
           path: dist
+    container:
+      image: jsii/superchain
   release_npm:
     name: Release to NPM
     needs: build
