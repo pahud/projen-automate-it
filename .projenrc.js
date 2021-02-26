@@ -11,4 +11,11 @@ const project = new TypeScriptProject({
   releaseToNpm: true,
 });
 
+const common_exclude = ['out.d'];
+
+project.gitignore.exclude(...common_exclude);
+project.npmignore.exclude(...common_exclude);
+
+
 project.synth();
+
