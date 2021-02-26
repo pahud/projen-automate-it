@@ -23,6 +23,7 @@ lib-cov
 logs
 node_modules/
 npm-debug.log*
+out.d
 pids
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 yarn-debug.log*
