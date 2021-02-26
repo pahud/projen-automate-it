@@ -14,10 +14,10 @@ const project = new projen.AwsCdkConstructLibrary({
 
 const auto = new Automation(project, {
   automationToken: 'mock',
-})
+});
 
-auto.projenYarnUpgrade()
-auto.projenYarnUpgrade('projenYarnUpgradeTest', { yarnTest: true })
+auto.projenYarnUpgrade();
+auto.projenYarnUpgrade('projenYarnUpgradeTest', { yarnTest: true });
 
 
 project.synth();

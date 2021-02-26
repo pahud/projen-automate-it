@@ -99,17 +99,17 @@ export class Automation {
         workflow_dispatch: {}, // allow manual triggering
       });
 
-      const steps  = []
+      const steps = [];
       steps.push({ uses: 'actions/checkout@v2' });
       steps.push({
         uses: 'actions/setup-node@v1',
         with: { 'node-version': '10.17.0' },
       });
-      steps.push({ run: 'yarn upgrade' })
-      steps.push({ run: 'yarn projen:upgrade' })
+      steps.push({ run: 'yarn upgrade' });
+      steps.push({ run: 'yarn projen:upgrade' });
       // conditionally run the test
       if (opts.yarnTest) {
-        steps.push({ run: 'yarn test' })
+        steps.push({ run: 'yarn test' });
       }
       // submit a PR
       steps.push({
