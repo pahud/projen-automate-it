@@ -6,7 +6,7 @@ const project = new TypeScriptProject({
   name: 'projen-automate-it',
   description: 'Projen wrapper for common operations',
   releaseBranches: ['main'],
-  deps: ['projen'],
+  deps: ['projen@^0.17'],
   dependabot: false,
   releaseToNpm: true,
 });
