@@ -2,6 +2,11 @@
 
 `projen-automate-it` is a tiny library that helps you generate workflow snippets for [projen](https://github.com/projen/projen).
 
+# ProjenYarnUpgrade workflow
+
+Previously introduced in this module. Now it's deprecated. Please use the [dependency upgrade workflow](https://github.com/projen/projen/pull/652) from projen instead.
+
+
 # Sample
 
 ```ts
@@ -15,6 +20,4 @@ const automation = new Automation(project, {
 automation.autoApprove();
 // generate auto-merge workflow
 automation.autoMerge();
-// generate auto yarn and projen upgrade workflow
-automation.projenYarnUpgrade();
 ```
