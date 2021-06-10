@@ -16,8 +16,6 @@ const auto = new Automation(project, {
   automationToken: 'mock',
 });
 
-auto.projenYarnUpgrade();
-auto.projenYarnUpgrade('projenYarnUpgradeTest', { yarnTest: true });
-
-
+auto.autoApprove()
+auto.autoMerge()
 project.synth();

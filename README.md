@@ -1,3 +1,7 @@
+# THIS PROJECT IS DEPRECATED
+
+As projen has built-in `upgrade-dependencies` and `auto-approve` workflows support. We are deprecating this project and will archive this project soon.
+
 # About
 
 `projen-automate-it` is a tiny library that helps you generate workflow snippets for [projen](https://github.com/projen/projen).

@@ -52,31 +52,4 @@ export class Automation {
       });
     };
   };
-  public autoApprove() {
-    if (this.project.github) {
-      const autoApprove = this.project.github.addWorkflow('AutoApprove');
-
-      autoApprove.on({
-        pull_request_target: {
-          types: ['assigned', 'opened', 'synchronize', 'reopened'],
-        },
-      });
-
-      autoApprove.addJobs({
-        'auto-approve': {
-          'runs-on': 'ubuntu-latest',
-          'steps':
-            [
-              {
-                uses: 'hmarr/auto-approve-action@v2.0.0',
-                if: "github.actor == 'pahud' || contains( github.event.pull_request.labels.*.name, 'auto-approve')",
-                with: {
-                  'github-token': '${{ secrets.GITHUB_TOKEN }}',
-                },
-              },
-            ],
-        },
-      });
-    };
-  };
 }
