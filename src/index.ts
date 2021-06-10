@@ -9,14 +9,6 @@ export interface AutomationProps {
   readonly automationToken?: string;
 }
 
-interface projenYarnUpgradeOptions {
-  /**
-   * run `yarn test`
-   * @default false
-   */
-  readonly yarnTest?: boolean;
-}
-
 export class Automation {
   readonly project: pr.Project;
   readonly automationToken: string;
@@ -87,50 +79,4 @@ export class Automation {
       });
     };
   };
-
-  public projenYarnUpgrade(id: string = 'ProjenYarnUpgrade', opts: projenYarnUpgradeOptions = {}) {
-    if (this.project.github) {
-      const projenYarnUpgrade = this.project.github.addWorkflow(id);
-
-      projenYarnUpgrade.on({
-        schedule: [{
-          cron: '11 0 * * *',
-        }], // 0:11am every day
-        workflow_dispatch: {}, // allow manual triggering
-      });
-
-      const steps = [];
-      steps.push({ uses: 'actions/checkout@v2' });
-      steps.push({
-        uses: 'actions/setup-node@v1',
-        with: { 'node-version': '10.17.0' },
-      });
-      steps.push({ run: 'yarn upgrade' });
-      steps.push({ run: 'yarn projen:upgrade' });
-      // conditionally run the test
-      if (opts.yarnTest) {
-        steps.push({ run: 'yarn test' });
-      }
-      // submit a PR
-      steps.push({
-        name: 'Create Pull Request',
-        uses: 'peter-evans/create-pull-request@v3',
-        with: {
-          'token': '${{ secrets.' + this.automationToken + ' }}',
-          'commit-message': 'chore: upgrade projen',
-          'branch': 'auto/projen-upgrade',
-          'title': 'chore: upgrade projen and yarn',
-          'body': 'This PR upgrades projen and yarn upgrade to the latest version',
-          'labels': 'auto-merge,auto-approve',
-        },
-      });
-
-      projenYarnUpgrade.addJobs({
-        upgrade: {
-          'runs-on': 'ubuntu-latest',
-          'steps': steps,
-        },
-      });
-    }
-  }
 }
